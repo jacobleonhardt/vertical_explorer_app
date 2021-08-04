@@ -6,6 +6,9 @@ const csurf = require('csurf')
 const helmet = require('helmet')
 const cookieParser = require('cookie-parser')
 
+// Set Imports
+const routes = require('./routes')
+
 // Check Current Environment
 const { environment } = require('./config')
 const isProduction = environment === 'production'
@@ -33,3 +36,7 @@ app.use(csurf({
         httpOnly: true,
     }
 }))
+
+app.use(routes)
+
+modules.exports = app
