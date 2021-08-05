@@ -1,9 +1,14 @@
 const express = require('express')
 const router = express.Router()
+const apiRouter = require('./api')
 
-router.get('/test', function(req, res) {
+// use apiRouter whenever there is a path with '/api'
+router.use('/api', apiRouter)
+
+router.get('/hello', function(req, res) {
     res.cookie('XSRF-TOKEN', req.csrfToken())
     res.send('IT\'S WORKING!')
 })
+
 
 module.exports = router;
