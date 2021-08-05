@@ -39,4 +39,4 @@ app.use(csurf({
 
 app.use(routes)
 
-modules.exports = app
+module.exports = app
