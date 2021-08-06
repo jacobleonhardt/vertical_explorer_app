@@ -20,7 +20,11 @@ const removeUser = () => {
 
 // Thunk
 export const login = (user) => async(dispatch) => {
+    console.log('>>> DISPATCHED to STORE')
+
     const { credential, password } = user
+    console.log('>>> SENT to BACK')
+
     const response = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify({
@@ -28,6 +32,9 @@ export const login = (user) => async(dispatch) => {
             password,
         })
     })
+
+    console.log('>>> RETRIEVED')
+
     const data = await response.json()
     dispatch(setUser(data.user))
     return response
@@ -57,11 +64,11 @@ export const signup = (user) => async(dispatch) => {
 }
 
 export const logout = () => async(dispatch) => {
-    // const response = await csrfFetch('/api/session', {
-    //     method: 'DELETE'
-    // })
+    const response = await csrfFetch('/api/session', {
+        method: 'DELETE'
+    })
     dispatch(removeUser())
-    return
+    return response
 }
 
 // Reducer

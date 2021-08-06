@@ -17,6 +17,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrs([])
+        console.log('>>> SUBMITTED')
         return dispatch(sessionActions.login({ credentials, password }))
             .catch(async (res) => {
                 const data = await res.json()
