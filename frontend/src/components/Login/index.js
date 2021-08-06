@@ -10,18 +10,18 @@ const Login = () => {
 
     const [credentials, setCredentials] = useState('')
     const [password, setPassword] = useState('')
-    const [err, setErr] = useState([])
+    const [errs, setErrs] = useState([])
 
     if (user) return <Redirect to='/' />
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setErr([])
+        setErrs([])
         return dispatch(sessionActions.login({ credentials, password }))
             .catch(async (res) => {
                 const data = await res.json()
                 if (data && data.errors) {
-                    setErr(data.errors)
+                    setErrs(data.errors)
                 }
             })
     }
@@ -29,6 +29,9 @@ const Login = () => {
     return (
         <div className="form">
             <form onSubmit={handleSubmit}>
+                <div className="form-errors">
+                    {errs.map((error, idx) => <p key={idx}>{error}</p>)}
+                </div>
                 <label>
                     Username/Email
                     <input
