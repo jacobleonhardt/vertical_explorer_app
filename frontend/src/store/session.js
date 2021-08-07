@@ -1,4 +1,3 @@
-import { defaults } from "js-cookie"
 import { csrfFetch } from "./csrf"
 
 // Action Creators
@@ -21,7 +20,9 @@ const removeUser = () => {
 
 // Thunk
 export const login = (user) => async(dispatch) => {
+
     const { credential, password } = user
+
     const response = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify({
@@ -29,6 +30,30 @@ export const login = (user) => async(dispatch) => {
             password,
         })
     })
+
+    const data = await response.json()
+    dispatch(setUser(data.user))
+    return response
+}
+
+export const restoreUser = () => async(dispatch) => {
+    const response = await csrfFetch('/api/session')
+    const data = await response.json()
+    dispatch(setUser(data.user))
+    return response
+}
+
+export const signup = (user) => async(dispatch) => {
+    const { username, email, password } = user
+    const response = await csrfFetch("/api/users", {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            email,
+            password,
+        })
+    })
+
     const data = await response.json()
     dispatch(setUser(data.user))
     return response
@@ -38,6 +63,8 @@ export const logout = () => async(dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE'
     })
+    dispatch(removeUser())
+    return response
 }
 
 // Reducer

@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as sessionActions from '../../store/session'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom';
+import './login.css'
 
 const Login = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
-    const [credentials, setCredentials] = useState('')
+    const [credential, setCredential] = useState('')
     const [password, setPassword] = useState('')
-    const [err, setErr] = useState([])
+    const [errs, setErrs] = useState([])
 
     if (user) return <Redirect to='/' />
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setErr([])
-        return dispatch(sessionActions.login({ credentials, password }))
+        setErrs([])
+        return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json()
                 if (data && data.errors) {
-                    setErr(data.errors)
+                    setErrs(data.errors)
                 }
             })
     }
@@ -28,13 +29,16 @@ const Login = () => {
     return (
         <div className="form">
             <form onSubmit={handleSubmit}>
+                <div className="form-errors">
+                    {errs.map((error, idx) => <p key={idx}>{error}</p>)}
+                </div>
                 <label>
                     Username/Email
                     <input
                         type='text'
-                        value={credentials}
+                        value={credential}
                         placeholder="Username/Email"
-                        onChange={(e) => setCredentials(e.target.value)}
+                        onChange={(e) => setCredential(e.target.value)}
                         required
                     />
                 </label>
