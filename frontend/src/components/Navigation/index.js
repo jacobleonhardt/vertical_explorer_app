@@ -1,31 +1,42 @@
 import React, { useState } from 'react'
-import { Navlink } from 'react-redux'
-import ProfileButton from './profilebutton'
-import Logo from '../../../public/vertical_explorer_logo-transparent.png'
-import 'nav.css'
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import ProfileButton from './ProfileButton'
+import Logo from '../../images/vertical_explorer_logo-transparent.png'
+import './nav.css'
 
+export default function Navigation() {
 
-const Nav = () => {
+    const user = useSelector(state => state.session.user)
+    const showMenu = useState(false)
 
-    const user = useState(state => state.session.user)
+    const toggle = () => {
+        showMenu = !showMenu
+    }
 
     return (
         <div id='navbar'>
             <div className="right">
-                <Navlink to="/">{Logo}</Navlink>
+                <NavLink to="/"><img src={Logo} /></NavLink>
             </div>
             <div className="left">
             {user ?
-            <>
-                <Navlink>Climbs</Navlink>
-                <ProfileButton />
-            </> :
-            <>
-                <Navlink>Login</Navlink>
-                <Navlink>Signup</Navlink>
-            </>}
+                <>
+                    <ProfileButton />
+                    {showMenu ?
+                        <>
+                        <NavLink to='/climb'>Climb</NavLink>
+                        <NavLink to='/settings'>Settings</NavLink>
+                        </> :
+                        <></>}
+                </> :
+                <>
+                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/signup">Signup</NavLink>
+                </>}
+            </div>
         </div>
     )
 }
 
-export default Nav
+// export default Navigation

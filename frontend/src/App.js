@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Nav from './components/Navigation/index'
+import Navigation from './components/Navigation';
 import Login from './components/Login';
 import Signup from './components/Signup'
 
 function App() {
   return (
     <>
-      <Nav />
+      <Navigation />
       <Switch>
         <Route path="/login" exact>
           <Login />
