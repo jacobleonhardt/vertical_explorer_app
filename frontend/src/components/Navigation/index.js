@@ -26,15 +26,15 @@ const Navigation = () => {
             </div>
             <div className="left">
             {user ?
-                <>
-                <button onClick={toggle} id="hamburger-menu">{showMenu ? <i class="fas fa-times"></i> : <i class="fas fa-bars"></i>}</button>
+                <div id="menu">
+                    <button onClick={toggle} id="hamburger-menu">{showMenu ? <i class="fas fa-times"></i> : <i class="fas fa-bars"></i>}</button>
                     {showMenu ?
-                        <div id="menu">
+                        <div id="menu-links">
                             <NavLink to='/climb'>Climb</NavLink>
                             <NavLink to='/settings'>Settings</NavLink>
                         </div> :
                         <></>}
-                </> :
+                </div> :
                 <>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/signup">Signup</NavLink>

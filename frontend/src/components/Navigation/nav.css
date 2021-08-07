@@ -10,6 +10,11 @@
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
+#menu {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 #logo {
     max-width: 150px;
 }
@@ -25,8 +30,8 @@
     transition: .5s;
 }
 
-#menu a {
-    display: block;
+#menu-links a {
+    display: inline;
 }
 
 #hamburger-menu {
