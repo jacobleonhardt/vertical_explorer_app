@@ -2,8 +2,8 @@ import React from 'react'
 
 const ProfileButton = () => {
     return (
-        <div>
-            <i class="fas fa-user-circle"></i>
+        <div id="menu">
+            <i class="fas fa-bars"></i>
         </div>
     )
 }

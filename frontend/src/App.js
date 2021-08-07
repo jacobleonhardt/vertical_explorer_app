@@ -8,14 +8,16 @@ function App() {
   return (
     <>
       <Navigation />
-      <Switch>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/signup" exact>
-         <Signup />
-        </Route>
-      </Switch>
+      <div id="content">
+        <Switch>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/signup" exact>
+          <Signup />
+          </Route>
+        </Switch>
+      </div>
     </>
   );
 }
