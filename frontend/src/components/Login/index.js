@@ -8,7 +8,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
-    const [credentials, setCredentials] = useState('')
+    const [credential, setCredential] = useState('')
     const [password, setPassword] = useState('')
     const [errs, setErrs] = useState([])
 
@@ -17,8 +17,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrs([])
-        console.log('>>> SUBMITTED')
-        return dispatch(sessionActions.login({ credentials, password }))
+        return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json()
                 if (data && data.errors) {
@@ -37,9 +36,9 @@ const Login = () => {
                     Username/Email
                     <input
                         type='text'
-                        value={credentials}
+                        value={credential}
                         placeholder="Username/Email"
-                        onChange={(e) => setCredentials(e.target.value)}
+                        onChange={(e) => setCredential(e.target.value)}
                         required
                     />
                 </label>

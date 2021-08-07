@@ -20,10 +20,8 @@ const removeUser = () => {
 
 // Thunk
 export const login = (user) => async(dispatch) => {
-    console.log('>>> DISPATCHED to STORE')
 
     const { credential, password } = user
-    console.log('>>> SENT to BACK')
 
     const response = await csrfFetch('/api/session', {
         method: 'POST',
@@ -32,8 +30,6 @@ export const login = (user) => async(dispatch) => {
             password,
         })
     })
-
-    console.log('>>> RETRIEVED')
 
     const data = await response.json()
     dispatch(setUser(data.user))

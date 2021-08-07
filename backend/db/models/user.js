@@ -62,7 +62,6 @@ module.exports = (sequelize, DataTypes) => {
    };
 
    User.login = async function ({ credential, password }) {
-    console.log('>>> IN LOGIN FUNCTION')
 
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
@@ -74,6 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
     if (user && user.validatePassword(password)) {
+
       return await User.scope('currentUser').findByPk(user.id);
     }
   };

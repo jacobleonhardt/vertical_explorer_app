@@ -36,11 +36,7 @@ router.post(
     '/',
     validateLogin,
     asyncHandler(async (req, res, next) => {
-    console.log('>>> IN BACKEND')
-
       const { credential, password } = req.body;
-
-      console.log('>>> CALL LOGIN')
 
       const user = await User.login({ credential, password });
 
