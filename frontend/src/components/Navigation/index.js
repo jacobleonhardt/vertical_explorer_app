@@ -1,42 +1,48 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import ProfileButton from './ProfileButton'
+import { login } from '../../store/session'
 import Logo from '../../images/vertical_explorer_logo-transparent.png'
 import './nav.css'
 
-export default function Navigation() {
+const Navigation = () => {
+    const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
-    const showMenu = useState(false)
+    const [showMenu, setShowMenu] = useState(false)
 
     const toggle = () => {
-        showMenu = !showMenu
+        setShowMenu(!showMenu)
+    }
+
+    const loginDemo = () => {
+        return dispatch(login({ credential: 'Demo', password: 'password' }))
     }
 
     return (
         <div id='navbar'>
             <div className="right">
-                <NavLink to="/"><img src={Logo} /></NavLink>
+                <NavLink to="/"><img id="logo" src={Logo} /></NavLink>
             </div>
             <div className="left">
             {user ?
                 <>
-                    <ProfileButton />
+                <button onClick={toggle} id="hamburger-menu">{showMenu ? <i class="fas fa-times"></i> : <i class="fas fa-bars"></i>}</button>
                     {showMenu ?
-                        <>
-                        <NavLink to='/climb'>Climb</NavLink>
-                        <NavLink to='/settings'>Settings</NavLink>
-                        </> :
+                        <div id="menu">
+                            <NavLink to='/climb'>Climb</NavLink>
+                            <NavLink to='/settings'>Settings</NavLink>
+                        </div> :
                         <></>}
                 </> :
                 <>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/signup">Signup</NavLink>
+                    <button onClick={loginDemo}>Demo</button>
                 </>}
             </div>
         </div>
     )
 }
 
-// export default Navigation
+export default Navigation

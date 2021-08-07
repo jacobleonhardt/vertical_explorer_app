@@ -1,0 +1,43 @@
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+#logo {
+    max-width: 150px;
+}
+
+#navbar .left a {
+    color: #bd2d1a;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+#navbar .left a:hover {
+    color: #000;
+    transition: .5s;
+}
+
+#menu a {
+    display: block;
+}
+
+#hamburger-menu {
+    background: #e84832;
+    color: #fff;
+    font-size: 18px;
+    border: 0px;
+    padding: 5px;
+    border-radius: 3px;
+    width: 30px;
+    max-width: 50px;
+    height: 30px;
+    max-height: 50px;
+}
