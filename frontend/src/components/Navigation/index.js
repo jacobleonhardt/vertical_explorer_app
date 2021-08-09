@@ -40,7 +40,7 @@ const Navigation = () => {
                 <>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/signup">Signup</NavLink>
-                    <button onClick={loginDemo}>Demo</button>
+                    <button className='nav-button' onClick={loginDemo}>Demo</button>
                 </>}
             </div>
         </div>
