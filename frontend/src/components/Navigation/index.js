@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { login } from '../../store/session'
+import Logout from '../Logout'
 import Logo from '../../images/vertical_explorer_logo-transparent.png'
 import './nav.css'
 
@@ -32,13 +33,14 @@ const Navigation = () => {
                         <div id="menu-links">
                             <NavLink to='/climb'>Climb</NavLink>
                             <NavLink to='/settings'>Settings</NavLink>
+                            <Logout />
                         </div> :
                         <></>}
                 </div> :
                 <>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/signup">Signup</NavLink>
-                    <button onClick={loginDemo}>Demo</button>
+                    <button className='nav-button' onClick={loginDemo}>Demo</button>
                 </>}
             </div>
         </div>
