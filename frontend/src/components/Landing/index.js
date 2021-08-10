@@ -23,10 +23,12 @@ const Landing = () => {
 
     return (
         <div id='splash'>
-            <img style={{width: 150}} src={Logo} />
-            <button className="landing-button" onClick={toLogin}>I'm Back</button>
-            <button className="landing-button" onClick={toSignup}>I'm New Here</button>
-            <button className='nav-button' onClick={loginDemo}>Demo</button>
+            <img style={{width: 175}} src={Logo} />
+            <h1>Vertical Explorer</h1>
+            <h2>Climb-Tracking App</h2>
+            <button className="landing-button" onClick={toLogin}>I'm Back <i class="fas fa-sign-in-alt"></i></button>
+            <button className="landing-button" onClick={toSignup}>I'm New Here <i class="fas fa-user-plus"></i></button>
+            <button className="landing-button alt" onClick={loginDemo}>Demo User <i class="fas fa-user-secret"></i></button>
         </div>
     )
 }

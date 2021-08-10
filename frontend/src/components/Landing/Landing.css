@@ -1,5 +1,4 @@
 #splash {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,6 +6,32 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../../images/vertical-explorer-landing-backgroun.jpg");
-    background-position: center;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
+.landing-button {
+    min-width: 200px;
+    padding: 10px 15px;
+    border: 1px solid #e84832;
+    margin: 5px;
+    color: #fff;
+    background-color: #e84832;
+    font-size: 21px;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+.landing-button.alt {
+    color: #000;
+    background-color: transparent;
+    border: 1px solid #000;
+}
+
+.landing-button:hover {
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    transition: .5s;
+    cursor: pointer;
 }

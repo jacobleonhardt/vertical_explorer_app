@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1, h2 {
+  font-family: "Quicksand",sans-serif;
+  font-weight: 500;
+  margin: 0;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 38px;
+}
+
+h2 {
+  font-size: 21px;
+  line-height: 31px;
+}
