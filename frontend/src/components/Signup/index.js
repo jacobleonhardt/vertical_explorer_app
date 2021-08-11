@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import * as sessionActions from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
+import Logo from '../../images/vertical_explorer_logo-transparent.png'
 import './signup.css'
 
 const Signup = () => {
@@ -12,7 +14,6 @@ const Signup = () => {
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
     const [errs, setErrs] = useState([])
-
 
     if (user) return <Redirect to="/" />
 
@@ -27,11 +28,13 @@ const Signup = () => {
                 })
             }
 
-        return setErrs("Confirm Password field doesn't match the Password field.")
+        return setErrs(["Confirm Password field doesn't match the Password field."])
     }
 
     return (
         <div className="form">
+            <Link to='/'><img style={{width: 175}} src={Logo} /></Link>
+
             <form onSubmit={handleSubmit}>
                 <div className="form-errors">
                     {errs.map((error, idx) => <p key={idx}>{error}</p>)}
@@ -40,7 +43,7 @@ const Signup = () => {
                     <input
                         type='text'
                         value={username}
-                        placeholder='Username'
+                        placeholder='Rocky'
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
@@ -49,7 +52,7 @@ const Signup = () => {
                     <input
                         type='email'
                         value={email}
-                        placeholder='Email'
+                        placeholder='rocky@climbitall.com'
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
@@ -63,7 +66,7 @@ const Signup = () => {
                         required
                     />
                 </label>
-                <label>Username
+                <label>Confirm
                     <input
                         type='password'
                         value={confirm}
@@ -72,8 +75,11 @@ const Signup = () => {
                         required
                     />
                 </label>
-                <button type="submit">Get Started</button>
+                <button type="submit">Get Started <i class="fas fa-user-check"></i></button>
             </form>
+            <div id="link-to">
+                <Link to='/login'>Have an Account?</Link>
+            </div>
         </div>
     )
 }

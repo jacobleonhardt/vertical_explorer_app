@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as sessionActions from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
+import { login } from '../../store/session'
 import Logo from '../../images/vertical_explorer_logo-transparent.png'
 import './login.css'
 
@@ -14,6 +15,10 @@ const Login = () => {
     const [errs, setErrs] = useState([])
 
     if (user) return <Redirect to='/' />
+
+    const loginDemo = () => {
+        return dispatch(login({ credential: 'Demo', password: 'password' }))
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +34,7 @@ const Login = () => {
 
     return (
         <div className="form">
-            <img style={{width: 175}} src={Logo} />
+            <Link to='/'><img style={{width: 175}} src={Logo} /></Link>
 
             <form onSubmit={handleSubmit}>
                 <div className="form-errors">
@@ -58,7 +63,8 @@ const Login = () => {
                 <button type="submit">Login <i class="fas fa-arrow-right"></i></button>
             </form>
             <div id="link-to">
-                <Link to='/signup'>Need to join?</Link>
+                <Link to='/signup'>Need to join?</Link><br/>
+                <Link onClick={loginDemo}>Demo User <i class="fas fa-user-secret"></i></Link>
             </div>
         </div>
     )
