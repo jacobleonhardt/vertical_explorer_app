@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      total_climbed: {
+        type: Sequelize.INTEGER,
+        defaultValue: null,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
