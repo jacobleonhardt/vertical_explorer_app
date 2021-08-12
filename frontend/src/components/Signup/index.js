@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import Logo from '../../images/vertical_explorer_logo-transparent.png'
-import './signup.css'
+// Styles for forms handled via Login.css
 
 const Signup = () => {
     const dispatch = useDispatch()
