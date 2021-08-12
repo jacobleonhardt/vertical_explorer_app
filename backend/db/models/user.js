@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    total_climbed: {
+      type: Sequelize.INTEGER,
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -89,7 +92,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.associate = function(models) {
-    User.hasMany(Climb, { foreignKey: user_id })
+    User.hasMany(models.Climb, { foreignKey: 'user_id' })
   };
   return User;
 };

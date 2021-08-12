@@ -1,12 +1,23 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Climb = sequelize.define('Climb', {
-    user_id: DataTypes.INTEGER,
-    height: DataTypes.INTEGER,
-    difficulty: DataTypes.DECIMAL
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "User",
+        key: "id",
+      },
+    },
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    difficulty: {
+      type: DataTypes.DECIMAL,
+    },
   }, {});
   Climb.associate = function(models) {
-    Climb.belongsTo(User, { foreignKey: user_id })
+    Climb.belongsTo(models.User, { foreignKey: 'user_id' })
   };
   return Climb;
 };
