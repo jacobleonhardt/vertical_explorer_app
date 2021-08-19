@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     total_climbed: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
@@ -89,6 +89,11 @@ module.exports = (sequelize, DataTypes) => {
       hashedPassword,
     })
     return await User.scope('currentUser').findByPk(user.id)
+  }
+
+  User.updateUserTotal = async function({ height }) {
+    User.total_climbed = User.total_climbed + height
+    return User.total_climbed
   }
 
   User.associate = function(models) {

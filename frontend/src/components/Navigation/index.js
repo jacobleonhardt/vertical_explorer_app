@@ -22,7 +22,7 @@ const Navigation = () => {
             </div>
             <div className="left">
                 <div id="menu">
-                    <button onClick={toggle} id="hamburger-menu">{showMenu ? <i class="fas fa-times"></i> : <i class="fas fa-bars"></i>}</button>
+                    <button onClick={toggle} id="hamburger-menu">{showMenu ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}</button>
                     {showMenu ?
                         <div id="menu-links">
                             <NavLink to='/climb'>Climb</NavLink>

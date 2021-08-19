@@ -27,7 +27,7 @@ function App() {
         <div id="content">
           <Switch>
           <Route path="/" exact>
-             {user ? <Profile /> : <Landing />}
+             {user ? <Profile user={user}/> : <Landing />}
             </Route>
             <Route path="/login" exact>
               <Login />

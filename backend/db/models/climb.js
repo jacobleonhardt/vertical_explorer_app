@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
     },
   }, {});
+
+
+
   Climb.associate = function(models) {
     Climb.belongsTo(models.User, { foreignKey: 'user_id' })
   };
