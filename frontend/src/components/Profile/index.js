@@ -1,11 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import './Profile.css'
 
 const Profile = ({ user }) => {
-
-    let inMiles = user.total_climbed / 5280
+    const history = useHistory()
     const climbs = useSelector(state => state.climbs)
+    let inMiles = user.total_climbed / 5280
+
+    const addClimb = () => {
+        history.push('/climbs')
+    }
 
     return (
         <div className="profile">
@@ -16,7 +21,15 @@ const Profile = ({ user }) => {
                 {inMiles} mi.</>}</h3>
             </div>
             <div id="previous-climbs">
-
+                { !climbs ?
+                    <button className="nav-button" onClick={addClimb}>Add First Climb</button>
+                : climbs.map(climb => {
+                    return(
+                    <div className="climb" key={climb.id}>
+                        <h4>{climb.height}</h4>
+                        <h4>{climb.difficulty}</h4>
+                    </div>)})
+                }
             </div>
         </div>
     )
