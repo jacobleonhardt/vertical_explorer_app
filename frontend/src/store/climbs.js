@@ -6,20 +6,23 @@ const ADD_CLIMB = 'climbs/ADD_CLIMB'
 const REMOVE_CLIMB = 'climbs/REMOVE_CLIMB'
 
 // Dispatcher
-const getClimbs = (user) => {
+const getClimbs = (data) => {
     return {
         type: GET_CLIMBS,
-        payload: user,
+        payload: data,
     }
 }
 
 // Thunk
 
-export const getUserClimbs = (user) => async(dispatch) => {
+export const getUserClimbs = () => async(dispatch) => {
+    console.log('&&&&&&&&&& HERE &&&&&&&&&&')
     const response = await csrfFetch('/api/climbs')
-    const data = await response.json()
-    dispatch(getClimbs(data))
-    return data
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(getClimbs(data))
+        return data
+    }
 }
 
 // Reducer

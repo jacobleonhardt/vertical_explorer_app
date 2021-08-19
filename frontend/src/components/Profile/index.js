@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { getUserClimbs } from '../../store/climbs'
 import './Profile.css'
 
 const Profile = ({ user }) => {
@@ -11,6 +12,10 @@ const Profile = ({ user }) => {
     const addClimb = () => {
         history.push('/climbs')
     }
+
+    useEffect(() => {
+        getUserClimbs()
+    }, [])
 
     return (
         <div className="profile">
