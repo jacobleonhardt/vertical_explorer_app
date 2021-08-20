@@ -4,7 +4,8 @@ import Navigation from './components/Navigation';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
 import Login from './components/Login';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+import ClimbForm from './components/Climbs';
 import { restoreUser } from '../src/store/session'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/signup" exact>
               <Signup />
+            </Route>
+            <Route path="/climb" exact>
+              <ClimbForm />
             </Route>
           </Switch>
         </div>
