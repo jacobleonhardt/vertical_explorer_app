@@ -13,6 +13,13 @@ const getClimbs = (data) => {
     }
 }
 
+const addClimbs = (data) => {
+    return {
+        type: ADD_CLIMB,
+        payload: data,
+    }
+}
+
 // Thunk
 
 export const getUserClimbs = () => async(dispatch) => {
@@ -25,10 +32,29 @@ export const getUserClimbs = () => async(dispatch) => {
     }
 }
 
+export const makeNewClimb = (height, diff) => async(dispatch) => {
+    const response = await csrfFetch('/api/climbs/new', {
+        method: 'POST',
+        body: JSON.stringify({
+            height: height,
+            difficulty: diff,
+        })
+    })
+
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(addClimbs(data))
+        return data
+    }
+}
+
 // Reducer
 const climbsReducer = (state = null, action) => {
     switch(action.type) {
         case GET_CLIMBS:
+            state = action.payload
+            return state
+        case ADD_CLIMB:
             state = action.payload
             return state
         default:
