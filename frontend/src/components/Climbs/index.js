@@ -13,7 +13,7 @@ const ClimbForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (height <= 0 || typeof height != Number) {
+        if (height <= 0) {
             setErrs('Please provide a valid height.')
         } else {
             dispatch(makeNewClimb(height, diff))
@@ -28,14 +28,15 @@ const ClimbForm = () => {
                     { errs ? <p>{errs}</p> : <></> }
                 </div>
                 <label> Height
-                    <input placeholder={"100ft"}
-                    type="text"
+                    <input placeholder={"30ft"}
+                    type="number"
                     required
                     onChange={(e) => setHeight(e.target.value)}></input>
                 </label>
                 <label>Difficulty
                     <input placeholder={"5.9"}
-                    type="text"
+                    type="number"
+                    step="0.01"
                     onChange={(e) => setDiff(e.target.value)}></input>
                 </label>
                 <button type="submit">Add Climb <i className="fas fa-plus"></i></button>

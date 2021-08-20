@@ -20,5 +20,9 @@ router.get('/', asyncHandler( async(req, res) => {
     return res.json(myClimb)
 }))
 
+router.post('/', asyncHandler( async(req, res) => {
+    const { height, difficulty } = req.body
+    const myClimb = new Climb()
+}))
 
 module.exports = router;

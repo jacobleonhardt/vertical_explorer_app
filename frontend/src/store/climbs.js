@@ -33,7 +33,7 @@ export const getUserClimbs = () => async(dispatch) => {
 }
 
 export const makeNewClimb = (height, diff) => async(dispatch) => {
-    const response = await csrfFetch('/api/climbs/new', {
+    const response = await csrfFetch('/api/climbs', {
         method: 'POST',
         body: JSON.stringify({
             height: height,
