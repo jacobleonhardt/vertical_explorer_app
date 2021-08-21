@@ -17,6 +17,22 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
+  Climb.add = async function ({ user_id, height, difficulty }) {
+    if (difficulty === undefined) difficulty = null
+    const climb = await Climb.create({
+      user_id,
+      height,
+      difficulty,
+    });
+
+    const newClimb = climb.dataValues;
+    return await Climb.findByPk(newClimb.id);
+  };
+
+  Climb.delete = async function (id) {
+    const remove = await Climb.findByPk(id);
+    Climb.destroy({where : {id: remove.id}});
+  }
 
 
   Climb.associate = function(models) {

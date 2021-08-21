@@ -5,10 +5,10 @@ const { User, Climb } = require('../../db/models')
 
 const router = express.Router()
 
-router.get('/', asyncHandler( async(req, res) => {
+router.get('/', restoreUser, asyncHandler( async(req, res) => {
     console.log('+++++++++++ HERE ++++++++++')
 
-    const id = req.user.id
+    const id = req.body.user
     console.log('###########', id)
     const myClimb = await Climb.findAll({
         where: { user_id: id },
@@ -21,8 +21,9 @@ router.get('/', asyncHandler( async(req, res) => {
 }))
 
 router.post('/', asyncHandler( async(req, res) => {
-    const { height, difficulty } = req.body
-    const myClimb = new Climb()
+    const { user_id, height, difficulty } = req.body
+    const myClimb = await Climb.add(user_id, height, difficulty)
+    return myClimb
 }))
 
 module.exports = router;
