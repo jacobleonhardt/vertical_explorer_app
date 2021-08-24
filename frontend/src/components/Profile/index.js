@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getUserClimbs } from '../../store/climbs'
 import './Profile.css'
 
 const Profile = ({ user }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
     const climbs = useSelector(state => state.climbs)
     let inMiles = user.total_climbed / 5280
 
     const addClimb = () => {
-        history.push('/climbs')
+        history.push('/climb')
     }
 
     useEffect(() => {
-        getUserClimbs()
+        dispatch(getUserClimbs())
     }, [])
 
     return (

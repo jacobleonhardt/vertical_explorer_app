@@ -6,10 +6,8 @@ const { User, Climb } = require('../../db/models')
 const router = express.Router()
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
-    console.log('+++++++++++ HERE ++++++++++')
 
-    const id = req.body.user
-    console.log('###########', id)
+    const id = req.user.id
     const myClimb = await Climb.findAll({
         where: { user_id: id },
         order: [
