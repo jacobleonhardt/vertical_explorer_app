@@ -12,6 +12,7 @@
 
 #previous-climbs {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 2% 5%;
     margin: 0 auto;
@@ -19,4 +20,20 @@
 
 #previous-climbs button {
     max-width: 250px;
+}
+
+.climb {
+    display: flex;
+    justify-content: space-around;
+    background: #e84832;
+    color: #fff;
+    border-radius: 3px;
+    margin: 1%;
+}
+
+@media screen and (max-width: 300px) {
+    .climb {
+        display: block;
+        text-align: center;
+    }
 }

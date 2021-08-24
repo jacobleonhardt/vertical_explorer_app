@@ -21,6 +21,7 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
 router.post('/', asyncHandler( async(req, res) => {
     const { user_id, height, difficulty } = req.body
     const myClimb = await Climb.add(user_id, height, difficulty)
+    
     return myClimb
 }))
 

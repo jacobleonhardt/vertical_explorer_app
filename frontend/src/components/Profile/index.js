@@ -32,8 +32,8 @@ const Profile = ({ user }) => {
                 : climbs.map(climb => {
                     return(
                     <div className="climb" key={climb.id}>
-                        <h4>{climb.height}</h4>
-                        <h4>{climb.difficulty}</h4>
+                        <h4>{climb.height} ft. <i class="fas fa-ruler-combined"></i></h4>
+                        <h4>{climb.difficulty} <i class="fas fa-tachometer-alt"></i></h4>
                     </div>)})
                 }
             </div>
