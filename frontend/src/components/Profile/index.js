@@ -27,6 +27,7 @@ const Profile = ({ user }) => {
                 {inMiles} mi.</>}</h3>
             </div>
             <div id="previous-climbs">
+                <h3>Previous Climbs</h3>
                 { !climbs ?
                     <button className="nav-button" onClick={addClimb}>Add First Climb</button>
                 : climbs.map(climb => {
