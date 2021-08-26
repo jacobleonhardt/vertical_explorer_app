@@ -23,7 +23,6 @@ const addClimbs = (data) => {
 // Thunk
 
 export const getUserClimbs = () => async(dispatch) => {
-    console.log('&&&&&&&&&& HERE &&&&&&&&&&')
     const response = await csrfFetch('/api/climbs')
     if(response.ok) {
         const data = await response.json()
