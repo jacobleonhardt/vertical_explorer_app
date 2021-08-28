@@ -10,7 +10,7 @@ const ClimbForm = () => {
     const [height, setHeight] = useState(0)
     const [diff, setDiff] = useState('')
     const [errs, setErrs] = useState('')
-    const user_id = useSelector(state => state.session.user)
+    const user_id = useSelector(state => state.session.user.id)
 
     const handleSubmit = (e) => {
         e.preventDefault()

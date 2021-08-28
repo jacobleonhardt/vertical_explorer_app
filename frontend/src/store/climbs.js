@@ -20,10 +20,10 @@ const addClimbs = (data) => {
     }
 }
 
-// Thunk
-
+// Thunks
 export const getUserClimbs = () => async(dispatch) => {
     const response = await csrfFetch('/api/climbs')
+
     if(response.ok) {
         const data = await response.json()
         dispatch(getClimbs(data))
