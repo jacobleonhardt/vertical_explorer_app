@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getUserClimbs } from '../../store/climbs'
 import './Profile.css'
 
 const Profile = ({ user }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
     const climbs = useSelector(state => state.climbs)
     let inMiles = user.total_climbed / 5280
 
     const addClimb = () => {
-        history.push('/climbs')
+        history.push('/climb')
     }
 
     useEffect(() => {
-        getUserClimbs()
+        dispatch(getUserClimbs())
     }, [])
 
     return (
@@ -26,13 +27,14 @@ const Profile = ({ user }) => {
                 {inMiles} mi.</>}</h3>
             </div>
             <div id="previous-climbs">
+                <h3>Previous Climbs</h3>
                 { !climbs ?
                     <button className="nav-button" onClick={addClimb}>Add First Climb</button>
                 : climbs.map(climb => {
                     return(
                     <div className="climb" key={climb.id}>
-                        <h4>{climb.height}</h4>
-                        <h4>{climb.difficulty}</h4>
+                        <h4>{climb.height} ft. <i class="fas fa-ruler-combined"></i></h4>
+                        <h4>{climb.difficulty} <i class="fas fa-tachometer-alt"></i></h4>
                     </div>)})
                 }
             </div>
