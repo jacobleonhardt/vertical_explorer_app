@@ -8,7 +8,7 @@ const ClimbForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [height, setHeight] = useState(0)
-    const [diff, setDiff] = useState('')
+    const [diff, setDiff] = useState(0.0)
     const [errs, setErrs] = useState('')
     const user_id = useSelector(state => state.session.user.id)
 
