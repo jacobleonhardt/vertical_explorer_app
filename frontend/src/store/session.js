@@ -51,6 +51,7 @@ export const signup = (user) => async(dispatch) => {
             username,
             email,
             password,
+            total_climbed: 0,
         })
     })
 

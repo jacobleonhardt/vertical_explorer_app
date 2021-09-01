@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Climb.add = async function (user_id, height, difficulty) {
     if (difficulty === undefined) difficulty = null
-    console.log('&&&&&&', height)
     const climb = await Climb.create({
       user_id,
       height,

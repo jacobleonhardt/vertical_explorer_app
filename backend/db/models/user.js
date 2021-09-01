@@ -81,18 +81,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function({ username, email, password }) {
+  User.signup = async function({ username, email, password, total_climbed }) {
     const hashedPassword = bcrypt.hashSync(password)
     const user = await User.create({
       username,
       email,
+      total_climbed,
       hashedPassword,
     })
     return await User.scope('currentUser').findByPk(user.id)
   }
 
-  User.updateUserTotal = async function({ height }) {
-    User.total_climbed = User.total_climbed + height
+  User.updateUserTotal = async function(height) {
+    if (User.total_climbed === undefined) {
+      User.total_climbed = 0
+    }
+
+    User.total_climbed += Number(height)
     return User.total_climbed
   }
 
