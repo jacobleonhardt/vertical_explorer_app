@@ -8,7 +8,8 @@ module.exports = {
           id: 1,
           email: 'demo@user.io',
           username: 'Demo',
-          hashedPassword: bcrypt.hashSync('password')
+          hashedPassword: bcrypt.hashSync('password'),
+          total_climbed: 0,
         }], {});
 
   },

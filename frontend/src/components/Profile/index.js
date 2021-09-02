@@ -10,6 +10,8 @@ const Profile = ({ user }) => {
     const climbs = useSelector(state => state.climbs)
     let inMiles = user.total_climbed / 5280
 
+    console.log('>>>>>>>>>>', climbs)
+
     const addClimb = () => {
         history.push('/climb')
     }
@@ -22,7 +24,7 @@ const Profile = ({ user }) => {
         <div className="profile">
             <div id="profile-info">
                 <h2>{user.username}</h2>
-                <h3>{ !user.total_climbed ? "Let's Climb!":
+                <h3>{ user.total_climbed == 0 ? "Let's Climb!":
                 <><i className="fas fa-mountain"></i> {user.total_climbed} "ft."
                 {inMiles} mi.</>}</h3>
             </div>
