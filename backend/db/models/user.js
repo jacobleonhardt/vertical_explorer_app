@@ -52,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
 
   // this cannot be an arrow function
   User.prototype.toSafeObject = function() {
-    const { id, username, email } = this
-    return { id, username, email }
+    const { id, username, email, total_climbed } = this
+    return { id, username, email, total_climbed }
   }
 
   User.prototype.validatePassword = function(password) {
