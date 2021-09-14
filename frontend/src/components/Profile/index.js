@@ -10,8 +10,6 @@ const Profile = ({ user }) => {
     const climbs = useSelector(state => state.climbs)
     let inMiles = user.total_climbed / 5280
 
-    console.log('>>>>>>>>>>', climbs)
-
     const addClimb = () => {
         history.push('/climb')
     }
