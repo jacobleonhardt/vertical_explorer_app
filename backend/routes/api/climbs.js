@@ -22,7 +22,7 @@ router.post('/', asyncHandler( async(req, res) => {
     const { user_id, height, difficulty } = req.body
     const myClimb = await Climb.add(user_id, height, difficulty)
     await User.updateUserTotal(height)
-    return myClimb
+    return res.json(myClimb)
 }))
 
 module.exports = router;

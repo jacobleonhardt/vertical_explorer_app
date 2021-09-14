@@ -34,8 +34,8 @@ export const getUserClimbs = () => async(dispatch) => {
 export const makeNewClimb = (user_id, height, difficulty) => async(dispatch) => {
    console.log('##############HERE###########')
 
-    const response = await csrfFetch('/api/climbs', {
-        method: 'POST',
+    const response = await csrfFetch("/api/climbs", {
+        method: "POST",
         body: JSON.stringify({
             user_id,
             height,
@@ -43,12 +43,8 @@ export const makeNewClimb = (user_id, height, difficulty) => async(dispatch) => 
         })
     })
 
-    console.log('-------HERE-------')
-    console.log('===========', response)
-
     if(response.ok) {
         const data = await response.json()
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>', data)
         dispatch(addClimbs(data))
         return data
     }
