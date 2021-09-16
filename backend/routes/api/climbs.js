@@ -18,10 +18,19 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
     return res.json(myClimb)
 }))
 
-router.post('/', asyncHandler( async(req, res) => {
+router.post('/', restoreUser, asyncHandler( async(req, res) => {
+
     const { user_id, height, difficulty } = req.body
-    const myClimb = await Climb.add(user_id, height, difficulty)
-    await User.updateUserTotal(height)
+    await Climb.add(user_id, height, difficulty)
+    const climbHeight = Number(height)
+    await User.updateUserTotal(climbHeight)
+
+    const myClimb = await Climb.findAll({
+        where: { user_id: user_id },
+        order: [
+            ['createdAt', 'DESC'],
+        ]
+    })
     return res.json(myClimb)
 }))
 
