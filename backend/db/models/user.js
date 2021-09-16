@@ -97,7 +97,7 @@ module.exports = (sequelize, DataTypes) => {
       User.total_climbed = 0
     }
 
-    User.total_climbed = User.total_climbed + Number(height)
+    User.total_climbed = User.total_climbed + height
 
     return User.total_climbed
   }
