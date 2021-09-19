@@ -102,15 +102,11 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
 
-    console.log('$$$$$$$$$$$$$$$$$', climbs)
-    console.log('@@@@@@@@@@@@@@@@@@', climbs.total_climbed)
     if (climbs.total_climbed === undefined) {
-      console.log('>>>>> HERE <<<<<')
       climbs.total_climbed = 0
     }
 
-    climbs.total_climbed += height
-    console.log('##############', climbs.total_climbed)
+    climbs.increment( 'total_climbed', { by: height, where: { id: `${user_id}` } });
     return climbs.total_climbed
   }
 
