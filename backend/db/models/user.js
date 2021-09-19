@@ -92,14 +92,26 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id)
   }
 
-  User.updateUserTotal = async function(height) {
-    if (User.total_climbed === undefined) {
-      User.total_climbed = 0
+  User.updateUserTotal = async function(height, user_id) {
+    const { Op } = require('sequelize');
+    const climbs = await User.scope('loginUser').findOne({
+      where: {
+        [Op.or]: {
+          id: user_id,
+        },
+      },
+    });
+
+    console.log('$$$$$$$$$$$$$$$$$', climbs)
+    console.log('@@@@@@@@@@@@@@@@@@', climbs.total_climbed)
+    if (climbs.total_climbed === undefined) {
+      console.log('>>>>> HERE <<<<<')
+      climbs.total_climbed = 0
     }
 
-    User.total_climbed = User.total_climbed + height
-
-    return User.total_climbed
+    climbs.total_climbed += height
+    console.log('##############', climbs.total_climbed)
+    return climbs.total_climbed
   }
 
   User.associate = function(models) {

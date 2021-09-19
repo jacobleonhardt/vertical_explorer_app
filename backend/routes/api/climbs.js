@@ -23,7 +23,7 @@ router.post('/', restoreUser, asyncHandler( async(req, res) => {
     const { user_id, height, difficulty } = req.body
     await Climb.add(user_id, height, difficulty)
     const climbHeight = Number(height)
-    await User.updateUserTotal(climbHeight)
+    await User.updateUserTotal(climbHeight, user_id)
 
     const myClimb = await Climb.findAll({
         where: { user_id: user_id },
