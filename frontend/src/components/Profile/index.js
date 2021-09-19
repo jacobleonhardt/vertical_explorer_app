@@ -8,7 +8,7 @@ const Profile = ({ user }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const climbs = useSelector(state => state.climbs)
-    let inMiles = user.total_climbed / 5280
+    let inMiles = (user.total_climbed / 5280).toFixed(2)
 
     const addClimb = () => {
         history.push('/climb')
@@ -22,9 +22,9 @@ const Profile = ({ user }) => {
         <div className="profile">
             <div id="profile-info">
                 <h2>{user.username}</h2>
-                <h3>{ user.total_climbed == 0 ? "Let's Climb!":
-                <><i className="fas fa-mountain"></i> {user.total_climbed} "ft."
-                {inMiles} mi.</>}</h3>
+                <div id="distance">{ user.total_climbed == 0 ? "Let's Climb!":
+                <><h2 id="feet"><i className="fas fa-mountain"></i> {user.total_climbed} ft.</h2>
+                <h3 id="miles"><i class="fas fa-route"></i> {inMiles} mi.</h3></>}</div>
             </div>
             <div id="previous-climbs">
                 <h3>Previous Climbs</h3>

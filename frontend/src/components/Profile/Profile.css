@@ -35,6 +35,10 @@
     margin: 1%;
 }
 
+#distance {
+    text-align: center;
+}
+
 @media screen and (max-width: 300px) {
     .climb {
         display: block;
