@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 import { makeNewClimb } from '../../store/climbs'
+import { restoreUser } from '../../store/session'
 import './ClimbForm.css'
 
 const ClimbForm = () => {
@@ -12,12 +13,13 @@ const ClimbForm = () => {
     const [errs, setErrs] = useState('')
     const user_id = useSelector(state => state.session.user.id)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (height <= 0) {
             setErrs('Please provide a valid height.')
         } else {
-            dispatch(makeNewClimb(user_id, height, diff))
+            await dispatch(makeNewClimb(user_id, height, diff))
+            await dispatch(restoreUser())
             history.push('/')
         }
     }
