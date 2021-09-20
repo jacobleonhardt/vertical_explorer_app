@@ -19,7 +19,6 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
 }))
 
 router.post('/', restoreUser, asyncHandler( async(req, res) => {
-
     const { user_id, height, difficulty } = req.body
     await Climb.add(user_id, height, difficulty)
     const climbHeight = Number(height)
@@ -32,6 +31,12 @@ router.post('/', restoreUser, asyncHandler( async(req, res) => {
         ]
     })
     return res.json(myClimb)
+}))
+
+router.delete('/', restoreUser, asyncHandler( async(req, res) => {
+    const { user_id, climb_id, height } = req.body
+    await Climb.delete(climb_id)
+    await User.decrementUserTotal(user_id, height)
 }))
 
 module.exports = router;

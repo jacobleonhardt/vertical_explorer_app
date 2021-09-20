@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 // Action Creator
 const GET_CLIMBS = 'climbs/GET_CLIMBS'
 const ADD_CLIMB = 'climbs/ADD_CLIMB'
-const REMOVE_CLIMB = 'climbs/REMOVE_CLIMB'
+const DELETE_CLIMB = 'climbs/REMOVE_CLIMB'
 
 // Dispatcher
 const getClimbs = (data) => {
@@ -16,6 +16,13 @@ const getClimbs = (data) => {
 const addClimbs = (data) => {
     return {
         type: ADD_CLIMB,
+        payload: data,
+    }
+}
+
+const deleteClimbs = (data) => {
+    return {
+        type: DELETE_CLIMB,
         payload: data,
     }
 }
@@ -43,10 +50,25 @@ export const makeNewClimb = (user_id, height, difficulty) => async(dispatch) => 
 
     if(response.ok) {
         const data = await response.json()
-        console.log('>>>>>>>>>', data)
         dispatch(addClimbs(data))
         return data
     }
+}
+
+export const deletePrevClimb = (user_id, climb_id, height) => async(dispatch) => {
+    console.log('>>>>>>>>>>>>>>>>>>', height)
+    const response = await csrfFetch("api/climbs", {
+        method: "DELETE",
+        body: JSON.stringify({
+            user_id,
+            climb_id,
+            height
+        })
+    })
+
+    const data = await response.json()
+    dispatch(deleteClimbs(data))
+    return data
 }
 
 // Reducer
@@ -56,6 +78,9 @@ const climbsReducer = (state = null, action) => {
             state = action.payload
             return state
         case ADD_CLIMB:
+            state = action.payload
+            return state
+        case DELETE_CLIMB:
             state = action.payload
             return state
         default:

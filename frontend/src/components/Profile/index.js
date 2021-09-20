@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { getUserClimbs } from '../../store/climbs'
+import { getUserClimbs, deletePrevClimb } from '../../store/climbs'
 import './Profile.css'
 
 const Profile = ({ user }) => {
@@ -12,6 +12,11 @@ const Profile = ({ user }) => {
 
     const addClimb = () => {
         history.push('/climb')
+    }
+
+    const deleteClimb = (climb_id, height) => {
+        dispatch(deletePrevClimb(user.id, climb_id, height))
+        dispatch(getUserClimbs())
     }
 
     useEffect(() => {
@@ -35,6 +40,7 @@ const Profile = ({ user }) => {
                     <div className="climb" key={climb.id}>
                         <h4>{climb.height} ft. <i class="fas fa-ruler-combined"></i></h4>
                         <h4>{climb.difficulty} <i class="fas fa-tachometer-alt"></i></h4>
+                        <button onClick={() => deleteClimb(climb.id, climb.height)} class="delete">Delete <i class="fas fa-trash-alt"></i></button>
                     </div>)})
                 }
             </div>
