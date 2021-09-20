@@ -39,6 +39,18 @@
     text-align: center;
 }
 
+button.delete {
+    font-size: 21px;
+    line-height: 32px;
+    opacity: .75;
+    border: 0px solid;
+}
+
+button.delete:hover {
+    opacity: 1;
+    transition: .5s;
+}
+
 @media screen and (max-width: 300px) {
     .climb {
         display: block;

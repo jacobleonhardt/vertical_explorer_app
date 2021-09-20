@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Climb.delete = async function (id) {
-    const remove = await Climb.findByPk(id);
-    Climb.destroy({where : {id: remove.id}});
+    const climb = await Climb.findByPk(id);
+    Climb.destroy({where : {id: climb.id}});
   }
 
 
