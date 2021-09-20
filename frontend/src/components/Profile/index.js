@@ -16,7 +16,6 @@ const Profile = ({ user }) => {
 
     const deleteClimb = (climb_id, height) => {
         dispatch(deletePrevClimb(user.id, climb_id, height))
-        dispatch(getUserClimbs())
     }
 
     useEffect(() => {

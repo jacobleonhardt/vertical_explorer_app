@@ -56,7 +56,6 @@ export const makeNewClimb = (user_id, height, difficulty) => async(dispatch) => 
 }
 
 export const deletePrevClimb = (user_id, climb_id, height) => async(dispatch) => {
-    console.log('>>>>>>>>>>>>>>>>>>', height)
     const response = await csrfFetch("api/climbs", {
         method: "DELETE",
         body: JSON.stringify({
