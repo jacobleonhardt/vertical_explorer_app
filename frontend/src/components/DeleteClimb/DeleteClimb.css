@@ -12,7 +12,23 @@
     flex-direction: column;
 }
 
-
 .modal #buttons {
     display: inline-block;
+}
+
+.modal #buttons > button {
+    padding: 10px 15px;
+    border: 1px solid #e84832;
+    margin: 5px;
+    color: #fff;
+    background-color: #e84832;
+    font-size: 21px;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+.modal #buttons > button:hover {
+    border: 1px solid #000;
+    background-color: #000;
+    transition: .5s;
+    cursor: pointer;
 }

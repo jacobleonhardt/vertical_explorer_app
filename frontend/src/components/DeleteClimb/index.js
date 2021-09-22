@@ -21,8 +21,8 @@ const DeleteClimb = ({ user, showDel, setShowDel, climb_id }) => {
         <div id="modal" className="modal">
             <h5>Do you want to remove this climb?</h5>
             <div id="buttons">
-                <button onClick={deleteClimb}>Yeah <i class="fas fa-check"></i></button>
-                <button onClick={cancelDelClimb}>Nope <i class="fas fa-times"></i></button>
+                <button className="modal-choice" onClick={deleteClimb}>Yeah <i class="fas fa-check"></i></button>
+                <button className="modal-choice" onClick={cancelDelClimb}>Nope <i class="fas fa-times"></i></button>
             </div>
         </div>
     )

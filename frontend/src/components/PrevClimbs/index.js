@@ -23,9 +23,9 @@ const PrevClimbs = ({ climb }) => {
         <>
             {showDel ? <DeleteClimb setShowDel={setShowDel} showDel={showDel} climb_id={climb.id} /> : <></>}
             <div className="climb" key={climb.id}>
-                <h4>{climb.height} ft. <i class="fas fa-ruler-combined"></i></h4>
-                <h4>{climb.difficulty} <i class="fas fa-tachometer-alt"></i></h4>
-                <button onClick={(e) => deleteClimb(e, climb.id, climb.height)} class="delete">Delete <i class="fas fa-trash-alt"></i></button>
+                <h4>{climb.height} ft. <i className="fas fa-ruler-combined"></i></h4>
+                <h4>{climb.difficulty} <i className="fas fa-tachometer-alt"></i></h4>
+                <button onClick={(e) => deleteClimb(e, climb.id, climb.height)} className="delete">Delete <i class="fas fa-trash-alt"></i></button>
             </div>
         </>
     )
