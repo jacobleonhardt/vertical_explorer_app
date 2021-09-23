@@ -44,6 +44,7 @@ const ClimbForm = () => {
                 </label>
                 <button type="submit">Add Climb <i className="fas fa-plus"></i></button>
             </form>
+            <button className="form-alt" onClick={() => history.push('/')}>Nevermind <i class="fas fa-undo-alt"></i></button>
         </div>
     )
 }
