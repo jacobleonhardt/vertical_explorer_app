@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserClimbs, deletePrevClimb } from '../../store/climbs'
 import './DeleteClimb.css'
 
-const DeleteClimb = ({ user, showDel, setShowDel, climb_id }) => {
+const DeleteClimb = ({ user, setShowDel, climb_id, height }) => {
     const dispatch = useDispatch()
 
-    const deleteClimb = async (e, climb_id, height) => {
-        e.preventDefault()
+    const deleteClimb = async () => {
         await dispatch(deletePrevClimb(user.id, climb_id, height))
         dispatch(getUserClimbs())
         setShowDel(false)

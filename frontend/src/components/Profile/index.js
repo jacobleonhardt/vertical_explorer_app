@@ -32,7 +32,7 @@ const Profile = ({ user }) => {
                 { !climbs ?
                     <button className="nav-button" onClick={addClimb}>Add First Climb</button>
                 : climbs.map(climb => {
-                    return(<PrevClimbs climb={climb} />)})
+                    return(<PrevClimbs climb={climb} user={user} key={climb.id} />)})
                 }
             </div>
         </div>
