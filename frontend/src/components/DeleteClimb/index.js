@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUserClimbs, deletePrevClimb } from '../../store/climbs'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deletePrevClimb } from '../../store/climbs'
+import { restoreUser } from '../../store/session'
 import './DeleteClimb.css'
 
 const DeleteClimb = ({ user, setShowDel, climb_id, height }) => {
     const dispatch = useDispatch()
 
     const deleteClimb = async () => {
-        await dispatch(deletePrevClimb(user.id, climb_id, height))
-        dispatch(getUserClimbs())
+        dispatch(deletePrevClimb(user.id, climb_id, height))
+        dispatch(restoreUser())
         setShowDel(false)
     }
 
