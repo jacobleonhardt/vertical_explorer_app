@@ -37,6 +37,15 @@ router.delete('/', restoreUser, asyncHandler( async(req, res) => {
     const { user_id, climb_id, height } = req.body
     await Climb.delete(climb_id)
     await User.decrementUserTotal(user_id, height)
+
+    const myClimb = await Climb.findAll({
+        where: { user_id: id },
+        order: [
+            ['createdAt', 'DESC'],
+        ]
+    })
+
+    return res.json(myClimb)
 }))
 
 module.exports = router;
