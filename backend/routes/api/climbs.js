@@ -39,7 +39,7 @@ router.delete('/', restoreUser, asyncHandler( async(req, res) => {
     await User.decrementUserTotal(user_id, height)
 
     const myClimb = await Climb.findAll({
-        where: { user_id: id },
+        where: { user_id },
         order: [
             ['createdAt', 'DESC'],
         ]

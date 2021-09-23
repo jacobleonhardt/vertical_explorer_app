@@ -93,12 +93,9 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.updateUserTotal = async function(height, user_id) {
-    const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
-        [Op.or]: {
           id: user_id,
-        },
       },
     });
 
@@ -111,7 +108,6 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.decrementUserTotal = async function(user_id, height) {
-    // const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
         id: user_id,
@@ -119,7 +115,6 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     user.decrement( 'total_climbed', {by: height, where: { id: `${user_id}` }})
-    console.log('>>>>>>>> WORKED:', user.total_climbed)
     return user.total_climbed
   }
 
