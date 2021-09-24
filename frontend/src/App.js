@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
 import Login from './components/Login';
+import Settings from './components/Settings';
 import Signup from './components/Signup';
 import ClimbForm from './components/Climbs';
 import { restoreUser } from '../src/store/session'
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route path="/climb" exact>
               <ClimbForm />
+            </Route>
+            <Route path="/settings" exact>
+              <Settings />
             </Route>
           </Switch>
         </div>
