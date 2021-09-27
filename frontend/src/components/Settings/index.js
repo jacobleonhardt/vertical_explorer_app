@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
 import * as sessionActions from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { login } from '../../store/session'
-import Logo from '../../images/vertical_explorer_logo-transparent.png'
+import './Settings.css'
 
 const Settings = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
+    const userName = useSelector(state => state.session.user.username)
+    const userEmail = useSelector(state => state.session.user.email)
+
     let [errs, setErrs] = useState([])
 
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
 
     return (
         <div className="form">
@@ -20,10 +27,18 @@ const Settings = () => {
                     {errs.map((error, idx) => <p key={idx}>{error}</p>)}
                 </div>
                 <label>
-                    Username/Email
+                    Username
                     <input
                         type='text'
-                        // value={userName}
+                        value={userName}
+                        // onChange={(e) => setCredential(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Email
+                    <input
+                        type='email'
+                        value={userEmail}
                         // onChange={(e) => setCredential(e.target.value)}
                     />
                 </label>
@@ -47,8 +62,7 @@ const Settings = () => {
                 </label>
                 <button type="submit">Update <i class="fas fa-thumbs-up"></i></button>
             </form>
-            <div id="link-to">
-            </div>
+            <button className="form-alt" onClick={() => history.push('/')}>Nevermind <i class="fas fa-undo-alt"></i></button>
         </div>
     )
 }
