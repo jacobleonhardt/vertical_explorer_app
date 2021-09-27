@@ -1,0 +1,25 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h3 {
+    font-size: 14px;
+}
+
+footer a {
+    font-size: 18px;
+    margin: 0 5px;
+    color: #e84832;
+}
+
+footer a:hover {
+    color: #000;
+    transition: .5s;
+}
+
+footer img {
+    width: 18px;
+}
