@@ -1,0 +1,108 @@
+.form  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: auto;
+    height: 100vh;
+    background: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)), url('../../images/vertical-explorer-landing-backgroun.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form label, .form input {
+    display: block;
+}
+
+.form label {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form input {
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 3px;
+    margin-bottom: 4%;
+}
+
+.form button {
+    width: 100%;
+    margin-top: 16px;
+    background: #e84832;
+    color: #fff;
+    padding: 10px 15px;
+    border: 1px solid #e84832;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-size: 21px;
+}
+
+.form button:hover {
+    background-color: #000;
+    border: 1px solid #000;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.form .form-alt {
+    max-width: 210px;
+    margin-top: 16px;
+    background-color: transparent;
+    color: #000;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-size: 21px;
+}
+
+.form .form-alt:hover {
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    transition: .5s;
+    cursor: pointer;
+}
+
+
+.form-errors {
+    width: 100%;
+    background: #e84832;
+    padding: 0 5px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.form-errors p {
+    padding: 5px;
+}
+
+#link-to {
+    margin-top: 10px;
+}
+
+#link-to a {
+    padding-top: 10px;
+    text-decoration: none;
+    color: #e84832;
+    font-size: 21px;
+    line-height: 32px;
+    font-family: "Quicksand",sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+#link-to a:hover {
+    color: #000;
+    transition: .5s;
+    cursor: pointer;
+}

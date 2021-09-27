@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Settings from './components/Settings';
 import Signup from './components/Signup';
 import ClimbForm from './components/Climbs';
+import Footer from './components/Footer';
 import { restoreUser } from '../src/store/session'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -44,6 +45,7 @@ function App() {
               <Settings />
             </Route>
           </Switch>
+          <Footer />
         </div>
       </>
     )
