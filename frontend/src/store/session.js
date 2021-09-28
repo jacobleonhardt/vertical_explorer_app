@@ -60,6 +60,15 @@ export const signup = (user) => async(dispatch) => {
     return response
 }
 
+
+export const edit = (user) => async(dispatch) {
+    const { username, email, password, id } = user
+    let response;
+    if(password) {
+        response = await csrfFetch('/api/session/settings')
+    }
+}
+
 export const logout = () => async(dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE'
