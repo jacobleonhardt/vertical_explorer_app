@@ -118,6 +118,12 @@ module.exports = (sequelize, DataTypes) => {
     return user.total_climbed
   }
 
+  // User.updateUserProfile = async function(id, username, email, password) {
+  //   const user = await User.scope('loginUser').findByPk(id);
+
+
+  // }
+
   User.associate = function(models) {
     User.hasMany(models.Climb, { foreignKey: 'user_id' })
   };

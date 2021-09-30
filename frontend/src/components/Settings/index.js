@@ -21,7 +21,7 @@ const Settings = () => {
     }
 
     return (
-        <div className="form">
+        <div className="settings-form">
             <form onSubmit={handleSubmit}>
                 <div className="form-errors">
                     {errs.map((error, idx) => <p key={idx}>{error}</p>)}
@@ -45,7 +45,7 @@ const Settings = () => {
                 <label>
                     Current Password
                     <input
-                        // type='password'
+                        type='password'
                         // value={password}
                         // placeholder="password"
                         // onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ const Settings = () => {
                 <label>
                     New Password
                     <input
-                        // type='password'
+                        type='password'
                         // value={password}
                         // placeholder="password"
                         // onChange={(e) => setPassword(e.target.value)}

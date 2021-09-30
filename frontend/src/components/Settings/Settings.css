@@ -1,4 +1,4 @@
-.form  {
+.settings-form  {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,11 +11,11 @@
     background-repeat: no-repeat;
 }
 
-.form label, .form input {
+.settings-form label, .settings-form input {
     display: block;
 }
 
-.form label {
+.settings-form label {
     font-size: 21px;
     font-weight: 500;
     line-height: 24px;
@@ -23,7 +23,7 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-.form input {
+.settings-form input {
     font-size: 18px;
     line-height: 21px;
     color: #000;
@@ -35,7 +35,7 @@
     margin-bottom: 4%;
 }
 
-.form button {
+.settings-form button {
     width: 100%;
     margin-top: 16px;
     background: #e84832;
@@ -46,15 +46,15 @@
     font-size: 21px;
 }
 
-.form button:hover {
+.settings-form button:hover {
     background-color: #000;
     border: 1px solid #000;
     transition: .5s;
     cursor: pointer;
 }
 
-.form .form-alt {
-    max-width: 210px;
+.settings-form .form-alt {
+    max-width: 217px;
     margin-top: 16px;
     background-color: transparent;
     color: #000;
@@ -64,7 +64,7 @@
     font-size: 21px;
 }
 
-.form .form-alt:hover {
+.settings-form .form-alt:hover {
     border: 1px solid #000;
     background-color: #000;
     color: #fff;
