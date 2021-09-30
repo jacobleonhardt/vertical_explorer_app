@@ -1,5 +1,6 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler')
+const bcrypt = require('bcryptjs')
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth')
 const { User } = require('../../db/models')
@@ -36,5 +37,39 @@ router.post('/', validateSignup, asyncHandler( async(req, res) => {
 
     return res.json({ user })
 }))
+
+router.put(
+  '/',
+  asyncHandler( async(req, res, next) => {
+    const { id, username, email, password } = req.body
+
+    const user = await User.findByPk(id)
+    const hashedPassword = bcrypt.hashSync(password)
+
+    user.update({
+      username,
+      email,
+      hashedPassword
+    })
+
+    return res.json(user)
+  })
+)
+
+router.patch(
+  '/',
+  asyncHandler( async(req, res, next) => {
+    const { id, username, email } = req.body
+
+    const user = await User.findByPk(id)
+
+    user.update({
+      username,
+      email
+    })
+
+    return res.json(user)
+  })
+  )
 
 module.exports = router;

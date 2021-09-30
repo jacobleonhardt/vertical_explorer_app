@@ -62,10 +62,10 @@ export const signup = (user) => async(dispatch) => {
 
 
 export const edit = (user) => async(dispatch) => {
-    const { username, email, password, id } = user
+    const { id, username, email, password } = user
     let response;
     if(password) {
-        response = await csrfFetch('/api/session/settings', {
+        response = await csrfFetch('/api/users', {
             method: 'PUT',
             body: JSON.stringify({
                 id,
@@ -75,7 +75,7 @@ export const edit = (user) => async(dispatch) => {
             })
         })
     } else {
-        response = await csrfFetch('/api/session/settings', {
+        response = await csrfFetch('/api/users', {
             method: 'PATCH',
             body: JSON.stringify({
                 id,
