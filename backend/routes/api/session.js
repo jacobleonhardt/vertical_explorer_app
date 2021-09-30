@@ -55,6 +55,24 @@ router.post(
     }),
   );
 
+  router.put(
+    '/',
+    validateLogin,
+    asyncHandler( async(req, res, next) => {
+      const { id, username, email, password } = req.body
+
+      const user = await User.findByPk(id)
+
+      user.update({
+        username,
+        email,
+        password
+      })
+
+      return res.json(user)
+    })
+  )
+
   router.delete(
     '/',
     (_req, res) => {
