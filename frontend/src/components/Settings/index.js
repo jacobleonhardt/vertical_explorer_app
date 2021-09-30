@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as sessionActions from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { login } from '../../store/session'
+import { edit } from '../../store/session'
 import './Settings.css'
 
 const Settings = () => {
@@ -10,14 +10,30 @@ const Settings = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
-    const userName = useSelector(state => state.session.user.username)
-    const userEmail = useSelector(state => state.session.user.email)
+    const [username, setUsername] = useState(user.username)
+    const [email, setEmail] = useState(user.email)
+    const [password, setPassword] = useState('')
+    const [confirm, setConfirm] = useState('')
 
-    let [errs, setErrs] = useState([])
+    let errs = []
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        if(username.length === 0 || email.length === 0) {
+            errs.push('Username and/or Email cannot be empty.')
+        }
 
+        if(password !== confirm) {
+            console.log('HERE!!!!!!!!!!!!!!!!!!')
+            errs.push("New Password and Confirm New Password fields don't match.")
+        }
+
+        if(errs.length === 0) {
+            await dispatch(edit({ id: user.id, username, email, password }))
+            history.push('/')
+        } else {
+            return errs
+        }
     }
 
     return (
@@ -30,34 +46,32 @@ const Settings = () => {
                     Username
                     <input
                         type='text'
-                        value={userName}
-                        // onChange={(e) => setCredential(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </label>
                 <label>
                     Email
                     <input
                         type='email'
-                        value={userEmail}
-                        // onChange={(e) => setCredential(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Current Password
-                    <input
-                        type='password'
-                        // value={password}
-                        // placeholder="password"
-                        // onChange={(e) => setPassword(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </label>
                 <label>
                     New Password
                     <input
                         type='password'
-                        // value={password}
-                        // placeholder="password"
-                        // onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Confirm Password
+                    <input
+                        type='password'
+                        value={confirm}
+                        onChange={(e) => setConfirm(e.target.value)}
                     />
                 </label>
                 <button type="submit">Update <i class="fas fa-thumbs-up"></i></button>
